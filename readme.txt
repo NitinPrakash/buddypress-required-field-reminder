@@ -1,4 +1,4 @@
-=== BP Required Field Notification ===
+=== BuddyPress Required Field Reminder ===
 Contributors: nitin247
 Donate link: http://nitin247.com/
 Tags: Buddypres Required Fields, Required Field Notification, Wordpress, BuddyPress
