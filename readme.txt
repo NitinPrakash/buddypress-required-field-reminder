@@ -1,4 +1,4 @@
-=== BuddyPress Required Field Reminder ===
+=== BP Required Field Reminder ===
 Contributors: nitin247
 Donate link: http://nitin247.com/
 Tags: Buddypres Required Fields, Required Field Notification, Wordpress, BuddyPress
@@ -16,7 +16,7 @@ This free plugin will notify and redirect to profile edit page with all its requ
 
 == Installation ==
 
-* Upload `buddypress-required-field-reminder` to the `/wp-content/plugins/` directory
+* Upload `bp-required-field-reminder` to the `/wp-content/plugins/` directory
 * Activate the plugin through the 'Plugins' menu in WordPress
 
 

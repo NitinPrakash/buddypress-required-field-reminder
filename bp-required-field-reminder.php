@@ -1,30 +1,32 @@
 <?php
 /*
-Plugin Name: Buddypress Required Field Reminder
-Description: This Plugin remind Buddypress user when logged in to fill all required fields
+Plugin Name: BP Required Field Reminder
+Description: This Plugin reminds Buddypress user when logged in, to fill all required fields
 Author: nitin247
 License: GPLv2 or later
 Version: 1.0
-Text Domain: buddypress-required-field-reminder
+Text Domain: bprfr-required-field
 Network: true
 */
 
-// Constant defined
+// Constants defined
+
 defined( 'ABSPATH' ) || exit;
-define( 'BUDDYPRESS_REQUIRED_FIELD_VERSION', '1.0.0' );
-define( 'BUDDYPRESS_REQUIRED_FIELD_TEXTDOMAIN', 'buddypress-required-field-reminder' );
-define('PLUGIN_URI', ''.plugin_dir_path(__FILE__).'');
-define('PLUGIN_URL', ''.plugin_dir_url(__FILE__).'');
+
+define( 'BP_REQUIRED_FIELD_VERSION', '1.0' );
+define( 'BP_REQUIRED_FIELD_TEXTDOMAIN', 'bprfr-required-field' );
+define('BP_REQUIRED_FIELD_PLUGIN_URL', ''.plugin_dir_url(__FILE__).'');
+
 //Admin Menu Settings
 
 
-function buddypress_required_field_launch_av() 
+function bprfr_required_field_launch_av() 
 {
 	if (is_user_logged_in()) 
 	{
 		$user_id 	= wp_get_current_user()->ID;
 		$current_url  = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-		$redirect_url = buddypress_required_field_redirect_av($user_id);
+		$redirect_url = bprfr_required_field_redirect_av($user_id);
 
 		if (strpos($current_url, $redirect_url) === false)
 		{
@@ -48,21 +50,21 @@ function buddypress_required_field_launch_av()
 /**
  * Plugin styles
  */
-function buddypress_required_field_style_av()
+function bprfr_required_field_style_av()
 {	
-	wp_enqueue_style('bp-required-field-css',PLUGIN_URL . 'assets/style.css');
+	wp_enqueue_style('bp-required-field-css',BP_REQUIRED_FIELD_PLUGIN_URL . 'assets/style.css');
 }
 
 /**
  * Plugin notice
  */
-function buddypress_required_field_notification_av() 
+function bprfr_required_field_notification_av() 
 {
 	if (is_user_logged_in()) 
 	{
 		$user_id 	= wp_get_current_user()->ID;
 		$current_url  = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-		$redirect_url = buddypress_required_field_redirect_av($user_id);
+		$redirect_url = bprfr_required_field_redirect_av($user_id);
 
 		if (strpos($current_url, $redirect_url) !== false)
 		{
@@ -94,12 +96,12 @@ function buddypress_required_field_notification_av()
 	}
 }
 
-function buddypress_required_field_redirect_av($user_id)
+function bprfr_required_field_redirect_av($user_id)
 {
 	return bp_loggedin_user_domain() . 'profile/edit/'; 
 	
 }
-add_action('template_redirect'		, 'buddypress_required_field_launch_av');
-add_action('wp_head'			, 'buddypress_required_field_style_av');
-add_action('wp_footer'			,'buddypress_required_field_notification_av');
+add_action('template_redirect'		, 'bprfr_required_field_launch_av');
+add_action('wp_head'			, 'bprfr_required_field_style_av');
+add_action('wp_footer'			,'bprfr_required_field_notification_av');
 ?>
